@@ -20,7 +20,7 @@ ubiquitin-related mechanisms in neurodegeneration.
 # LOAD DATA
 # -----------------------------
 expr = pd.read_csv("expression_small.csv")
-coords = pd.read_csv("tissue_positions.csv")
+coords = pd.read_csv("tissue_positions_fixed.csv")
 
 expr = expr.rename(columns={"Unnamed: 0": "BARCODE"})
 coords = coords.rename(columns={"barcode": "BARCODE"})
