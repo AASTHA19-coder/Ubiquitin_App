@@ -59,12 +59,9 @@ with tabs[0]:
     st.subheader("🧬 Study Overview")
 
     st.info("""
-This application is derived from our analysis of Alzheimer's Disease (AD)  
-and Huntington’s Disease (HD) using transcriptomic data.
+This application is derived from our analysis of Alzheimer's Disease (AD) and Huntington’s Disease (HD) using transcriptomic data.
 
-We first performed differential expression and network analysis to identify  
-ubiquitin-related hub genes. These genes were then mapped onto spatial  
-transcriptomics data (Visium) to examine their localization in brain tissue.
+We first performed differential expression and network analysis to identify ubiquitin-related hub genes. These genes were then mapped onto spatial transcriptomics data (Visium) to examine their localization in brain tissue.
 
 This enables exploration of how disease-associated genes are spatially organized.
 """)
@@ -125,8 +122,7 @@ with tabs[3]:
     st.pyplot(fig)
 
     st.write("""
-Top-ranked regions represent highest expression levels  
-and may correspond to disease-relevant zones.
+Top-ranked regions represent highest expression levels and may correspond to disease-relevant zones.
 """)
 
 # -----------------------------
@@ -157,8 +153,7 @@ In our analysis, **{gene}** demonstrates **{level} expression** across the tissu
 
 We observe a **{pattern} spatial pattern**, with {count} high-activity regions.
 
-This is consistent with our DEG and network-based identification of  
-**{gene}** as a ubiquitin-related hub gene in neurodegenerative conditions.
+This is consistent with our DEG and network-based identification of **{gene}** as a ubiquitin-related hub gene in neurodegenerative conditions.
 """)
 
     # Disease relevance
