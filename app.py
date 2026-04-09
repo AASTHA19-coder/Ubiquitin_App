@@ -11,9 +11,7 @@ st.set_page_config(page_title="Ubixplorer", layout="wide")
 st.title("🧬 Ubixplorer: Ubiquitin-Based Spatial Explorer for AD–HD Profiling")
 
 st.markdown("""
-An interactive platform developed from our study integrating DEG analysis,  
-hub gene identification, and spatial transcriptomics to understand  
-ubiquitin-related mechanisms in neurodegeneration.
+An interactive platform developed from our study integrating DEG analysis, hub gene identification, and spatial transcriptomics to understand ubiquitin-related mechanisms in neurodegeneration.
 """)
 
 # -----------------------------
