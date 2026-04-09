@@ -127,6 +127,8 @@ with tabs[1]:
 
     st.markdown("""
 **Interpretation:**  
+x-axis and y-axis represnt the tissue coordinates.
+
 Each point represents a spatial location on the human brain tissue section.  
 
 Color intensity reflects gene expression levels.
@@ -149,7 +151,8 @@ with tabs[2]:
 
     st.pyplot(fig)
 
-    st.markdown(f"**Detected Hotspots:** {len(hotspots)} regions")
+    st.markdown(f"**Detected Hotspots:** {len(hotspots)} regions"
+               "x-axis and y-axis represnt the tissue coordinates.")
 
 # -----------------------------
 # RISK REGIONS
@@ -169,6 +172,8 @@ with tabs[3]:
     st.pyplot(fig)
 
     st.markdown("""
+x-axis and y-axis represnt the tissue coordinates.
+
 Top 50 regions with highest expression levels → potential disease-relevant zones.
 """)
 
