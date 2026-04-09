@@ -8,10 +8,45 @@ from scipy.stats import zscore
 # -----------------------------
 st.set_page_config(page_title="Ubixplorer", layout="wide")
 
-st.title("🧬 Ubixplorer: Ubiquitin-Based Spatial Explorer for AD–HD Profiling")
+# -----------------------------
+# CUSTOM CSS (FONTS + STYLE)
+# -----------------------------
+st.markdown("""
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+h1 {
+    font-size: 36px !important;
+    font-weight: 700;
+}
+h2 {
+    font-size: 26px !important;
+    font-weight: 600;
+}
+h3 {
+    font-size: 20px !important;
+    font-weight: 600;
+}
+p {
+    font-size: 16px;
+}
+.block-container {
+    padding-top: 2rem;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# -----------------------------
+# TITLE
+# -----------------------------
+st.markdown("## 🧬 Ubixplorer")
+st.markdown("### Ubiquitin-Based Spatial Explorer for AD–HD Profiling")
 
 st.markdown("""
-This interactive platform is developed from our study integrating differential expression analysis, hub gene identification, and spatial transcriptomics to explore ubiquitin-related mechanisms in neurodegenerative diseases (Alzheimer’s Disease and Huntington’s Disease).
+This platform integrates differential expression analysis, hub gene identification,  
+and spatial transcriptomics to investigate ubiquitin-related mechanisms  
+in neurodegenerative diseases.
 """)
 
 # -----------------------------
@@ -20,18 +55,15 @@ This interactive platform is developed from our study integrating differential e
 expr = pd.read_csv("expression_small.csv")
 coords = pd.read_csv("tissue_positions_fixed.csv")
 
-# Fix column names
 expr = expr.rename(columns={"Unnamed: 0": "BARCODE"})
-
 coords.columns = ["BARCODE", "IN_TISSUE", "ARRAY_ROW", "ARRAY_COL", "pxl_row", "pxl_col"]
 
-# Merge
 df = coords.merge(expr, on="BARCODE")
 
 # -----------------------------
 # SIDEBAR
 # -----------------------------
-st.sidebar.header("⚙️ Controls")
+st.sidebar.markdown("## ⚙️ Controls")
 
 genes = ["MYC","RELA","MYD88","NFKBIA","TLR2","FOXO1"]
 gene = st.sidebar.selectbox("Select Gene", genes)
@@ -39,7 +71,7 @@ gene = st.sidebar.selectbox("Select Gene", genes)
 threshold = st.sidebar.slider("Hotspot Threshold (Z-score)", 1.0, 3.0, 2.0)
 
 # -----------------------------
-# COMPUTATIONS
+# COMPUTATION
 # -----------------------------
 df[f"{gene}_z"] = zscore(df[gene].fillna(0))
 
@@ -62,40 +94,26 @@ tabs = st.tabs([
 # OVERVIEW
 # -----------------------------
 with tabs[0]:
-    col1, col2 = st.columns([1,5])
+    st.markdown("### **Study Overview**")
 
-    with col1:
-        st.image("images/overview.png", width=80)
+    st.markdown("""
+- Comparative analysis performed across:
+  - AD vs Control  
+  - AD vs HD  
+  - HD vs Control  
 
-    with col2:
-        st.subheader("Study Overview")
+- Identification of **ubiquitin-related hub genes**
 
-        st.info("""
-We performed comparative analysis across:
+- Projection onto **human brain Visium spatial transcriptomics data**
 
-• AD vs Control  
-• AD vs HD  
-• HD vs Control  
-
-From these, we identified **ubiquitin-related hub genes**.
-
-These hub genes were then projected onto **human brain Visium spatial transcriptomics data**  
-to understand their **spatial localization and activity patterns**.
-
-This platform enables exploration of how these disease-associated genes behave in real tissue.
+- Enables **spatial localization of disease-associated molecular activity**
 """)
 
 # -----------------------------
 # EXPRESSION
 # -----------------------------
 with tabs[1]:
-    col1, col2 = st.columns([1,5])
-
-    with col1:
-        st.image("images/expression.png", width=80)
-
-    with col2:
-        st.subheader(f"Spatial Expression: {gene}")
+    st.markdown(f"### **Spatial Expression: {gene}**")
 
     fig, ax = plt.subplots()
 
@@ -109,22 +127,17 @@ with tabs[1]:
 
     st.pyplot(fig)
 
-    st.caption("""
-Each point represents a spatial spot on a human brain tissue section (Visium platform).  
-Color intensity indicates expression level of the selected gene.
+    st.markdown("""
+**Interpretation:**  
+Each point represents a spatial location on the human brain tissue section.  
+Color intensity reflects gene expression levels.
 """)
 
 # -----------------------------
 # HOTSPOTS
 # -----------------------------
 with tabs[2]:
-    col1, col2 = st.columns([1,5])
-
-    with col1:
-        st.image("images/hotspot.png", width=80)
-
-    with col2:
-        st.subheader("Hotspot Regions (Z-score based)")
+    st.markdown("### **Hotspot Regions (Z-score based)**")
 
     fig, ax = plt.subplots()
 
@@ -137,19 +150,13 @@ with tabs[2]:
 
     st.pyplot(fig)
 
-    st.write(f"Total hotspot regions detected: {len(hotspots)}")
+    st.markdown(f"**Detected Hotspots:** {len(hotspots)} regions")
 
 # -----------------------------
 # RISK REGIONS
 # -----------------------------
 with tabs[3]:
-    col1, col2 = st.columns([1,5])
-
-    with col1:
-        st.image("images/risk.png", width=80)
-
-    with col2:
-        st.subheader("Top Risk Regions")
+    st.markdown("### **Top Risk Regions**")
 
     fig, ax = plt.subplots()
 
@@ -162,63 +169,52 @@ with tabs[3]:
 
     st.pyplot(fig)
 
-    st.write("Top 50 regions with highest expression (potential disease-relevant zones).")
+    st.markdown("""
+Top 50 regions with highest expression levels → potential disease-relevant zones.
+""")
 
 # -----------------------------
 # INTERPRETATION
 # -----------------------------
 with tabs[4]:
-    col1, col2 = st.columns([1,5])
+    st.markdown("### **Biological Interpretation**")
 
-    with col1:
-        st.image("images/interpretation.png", width=80)
-
-    with col2:
-        st.subheader("Biological Interpretation")
-
-    st.write(f"""
-The gene **{gene}** was identified as a hub gene in our differential analysis.
-
-Its spatial pattern suggests localized biological activity within the brain tissue.
+    st.markdown(f"""
+The gene **{gene}** was identified as a hub gene in AD–HD comparative analysis.  
+Its spatial distribution highlights localized functional activity.
 """)
 
-    st.markdown("### Disease Context")
+    st.markdown("#### **Disease Context**")
 
     if gene == "MYC":
-        st.write("Strongly associated with **AD vs Control** → cell cycle dysregulation.")
+        st.write("Associated with **AD vs Control** → cell cycle dysregulation")
 
     elif gene in ["RELA", "NFKBIA"]:
-        st.write("Shared in AD and HD → **NF-κB inflammatory pathway activation**.")
+        st.write("Shared in AD & HD → **NF-κB inflammatory signaling**")
 
     elif gene in ["MYD88", "TLR2"]:
-        st.write("Innate immune signaling → **neuroinflammation in both diseases**.")
+        st.write("Innate immune activation → **neuroinflammation**")
 
     elif gene == "FOXO1":
-        st.write("Stress response → **neuronal survival and degeneration balance**.")
+        st.write("Oxidative stress → **neuronal survival mechanisms**")
 
 # -----------------------------
 # PATHWAYS
 # -----------------------------
 with tabs[5]:
-    col1, col2 = st.columns([1,5])
-
-    with col1:
-        st.image("images/pathways.png", width=80)
-
-    with col2:
-        st.subheader("Gene-Associated Pathways")
+    st.markdown("### **Gene-Associated Pathways**")
 
     if gene in ["RELA", "NFKBIA"]:
-        st.success("NF-κB signaling → inflammation")
+        st.success("NF-κB signaling pathway → inflammation")
 
     elif gene in ["MYD88", "TLR2"]:
-        st.success("Toll-like receptor / innate immune signaling")
+        st.success("Toll-like receptor signaling → immune response")
 
     elif gene == "MYC":
-        st.success("Cell cycle regulation and proliferation")
+        st.success("Cell cycle regulation")
 
     elif gene == "FOXO1":
-        st.success("Oxidative stress response and apoptosis")
+        st.success("Oxidative stress & apoptosis")
 
 # -----------------------------
 # FOOTER
