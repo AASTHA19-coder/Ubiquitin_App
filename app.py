@@ -12,13 +12,12 @@ expr = pd.read_csv("expression_small.csv")
 coords = pd.read_csv("tissue_positions.csv")
 
 # -----------------------------
-# FIX COLUMN NAMES (ROBUST)
+# FIX COLUMN NAMES
 # -----------------------------
-# uppercase everything
 expr.columns = expr.columns.str.upper()
 coords.columns = coords.columns.str.upper()
 
-# fix barcode column
+# fix barcode
 if "UNNAMED: 0" in expr.columns:
     expr = expr.rename(columns={"UNNAMED: 0": "BARCODE"})
 
@@ -31,13 +30,26 @@ if "BARCODE" not in coords.columns:
 df = coords.merge(expr, on="BARCODE")
 
 # -----------------------------
-# AUTO-DETECT COORDINATES
+# DEBUG (IMPORTANT — REMOVE LATER)
 # -----------------------------
-col_candidates = [c for c in df.columns if "COL" in c.upper()]
-row_candidates = [c for c in df.columns if "ROW" in c.upper()]
+st.write("Columns in dataset:", df.columns)
 
-pxl_col = col_candidates[0]
-pxl_row = row_candidates[0]
+# -----------------------------
+# FIND COORDINATES SAFELY
+# -----------------------------
+pxl_col = None
+pxl_row = None
+
+for col in df.columns:
+    if "COL" in col.upper():
+        pxl_col = col
+    if "ROW" in col.upper():
+        pxl_row = col
+
+# fallback if not found
+if pxl_col is None or pxl_row is None:
+    st.error("❌ Could not find spatial coordinate columns. Please check your tissue_positions.csv file.")
+    st.stop()
 
 # -----------------------------
 # SELECT GENE
@@ -65,7 +77,7 @@ plt.colorbar(sc, ax=ax)
 st.pyplot(fig)
 
 # -----------------------------
-# HOTSPOT DETECTION
+# HOTSPOTS
 # -----------------------------
 st.subheader("Hotspot Detection")
 
@@ -87,7 +99,4 @@ st.pyplot(fig2)
 # ABOUT
 # -----------------------------
 st.subheader("About")
-st.write(
-    "Interactive visualization of ubiquitin-related hub gene expression and spatial hotspots "
-    "in brain tissue datasets."
-)
+st.write("Interactive visualization of ubiquitin-related gene expression.")
