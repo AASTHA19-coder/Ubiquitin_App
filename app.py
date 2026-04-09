@@ -9,7 +9,7 @@ st.title("🧬 Ubiquitin Spatial Disease Explorer")
 # LOAD DATA
 # -----------------------------
 expr = pd.read_csv("expression_small.csv")
-coords = pd.read_csv("tissue_positions.csv")
+coords = pd.read_csv("tissue_positions_fixed.csv")
 
 # -----------------------------
 # FIX COLUMN NAMES
