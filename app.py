@@ -117,9 +117,9 @@ with tabs[1]:
 
     sc = ax.scatter(df["pxl_col"], df["pxl_row"], c=df[gene], s=6)
 
-    ax.set_xlabel("Tissue X Coordinate")
-    ax.set_ylabel("Tissue Y Coordinate")
-    ax.invert_yaxis()
+    #ax.set_xlabel("Tissue X Coordinate")
+    #ax.set_ylabel("Tissue Y Coordinate")
+    #ax.invert_yaxis()
 
     plt.colorbar(sc, ax=ax)
 
@@ -143,9 +143,9 @@ with tabs[2]:
     ax.scatter(df["pxl_col"], df["pxl_row"], color="lightgrey", s=2)
     ax.scatter(hotspots["pxl_col"], hotspots["pxl_row"], color="red", s=8)
 
-    ax.set_xlabel("Tissue X Coordinate")
-    ax.set_ylabel("Tissue Y Coordinate")
-    ax.invert_yaxis()
+    #ax.set_xlabel("Tissue X Coordinate")
+    #ax.set_ylabel("Tissue Y Coordinate")
+    #ax.invert_yaxis()
 
     st.pyplot(fig)
 
@@ -162,9 +162,9 @@ with tabs[3]:
     ax.scatter(df["pxl_col"], df["pxl_row"], color="lightgrey", s=2)
     ax.scatter(top_regions["pxl_col"], top_regions["pxl_row"], color="yellow", s=12)
 
-    ax.set_xlabel("Tissue X Coordinate")
-    ax.set_ylabel("Tissue Y Coordinate")
-    ax.invert_yaxis()
+    #ax.set_xlabel("Tissue X Coordinate")
+    #ax.set_ylabel("Tissue Y Coordinate")
+    #ax.invert_yaxis()
 
     st.pyplot(fig)
 
