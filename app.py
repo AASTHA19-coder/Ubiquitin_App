@@ -151,10 +151,15 @@ with tabs[2]:
 
     st.pyplot(fig)
 
-    st.markdown(f"**Detected Hotspots:** {len(hotspots)} regions"
-               
-                
-                "x-axis and y-axis represent the tissue coordinates.")
+    st.markdown(f"**Detected Hotspots:** {len(hotspots)} regions")
+    st.markdown("""
+x-axis and y-axis represent the tissue coordinates.
+
+Each point represents a spatial location on the human brain tissue section.  
+
+
+""")
+
 
 # -----------------------------
 # RISK REGIONS
