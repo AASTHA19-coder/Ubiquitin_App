@@ -11,8 +11,7 @@ st.set_page_config(page_title="Ubixplorer", layout="wide")
 st.title("🧬 Ubixplorer: Ubiquitin-Based Spatial Explorer for AD–HD Profiling")
 
 st.markdown("""
-This interactive platform is developed from our study integrating differential expression analysis, hub gene identification, and spatial transcriptomics to explore ubiquitin-related mechanisms  
-in neurodegenerative diseases (Alzheimer’s Disease and Huntington’s Disease).
+This interactive platform is developed from our study integrating differential expression analysis, hub gene identification, and spatial transcriptomics to explore ubiquitin-related mechanisms in neurodegenerative diseases (Alzheimer’s Disease and Huntington’s Disease).
 """)
 
 # -----------------------------
