@@ -44,9 +44,7 @@ st.markdown("## 🧬 UbiXplorer")
 st.markdown("### Ubiquitin-Based Spatial Explorer for AD–HD Profiling")
 
 st.markdown("""
-This platform integrates differential expression analysis, hub gene identification,  
-and spatial transcriptomics to investigate ubiquitin-related mechanisms  
-in neurodegenerative diseases.
+This platform integrates differential expression analysis, hub gene identification, and spatial transcriptomics to investigate ubiquitin-related mechanisms in neurodegenerative diseases.
 """)
 
 # -----------------------------
