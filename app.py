@@ -12,6 +12,21 @@ expr = pd.read_csv("expression_small.csv")
 coords = pd.read_csv("tissue_positions.csv")
 
 # merge
+# standardize column names
+coords.columns = coords.columns.str.upper()
+expr.columns = expr.columns.str.upper()
+
+# rename barcode column if needed
+if "UNNAMED: 0" in expr.columns:
+    expr = expr.rename(columns={"UNNAMED: 0": "BARCODE"})
+
+if "BARCODE" not in coords.columns:
+    coords = coords.rename(columns={coords.columns[0]: "BARCODE"})
+
+st.write("Coords columns:", coords.columns)
+st.write("Expr columns:", expr.columns)
+
+# merge
 df = coords.merge(expr, on="BARCODE")
 
 # -----------------------------
