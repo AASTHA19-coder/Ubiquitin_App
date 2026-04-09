@@ -17,19 +17,19 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 h1 {
-    font-size: 36px !important;
+    font-size: 50px !important;
     font-weight: 700;
 }
 h2 {
-    font-size: 26px !important;
+    font-size: 30px !important;
     font-weight: 600;
 }
 h3 {
-    font-size: 20px !important;
+    font-size: 25px !important;
     font-weight: 600;
 }
 p {
-    font-size: 16px;
+    font-size: 18px;
 }
 .block-container {
     padding-top: 2rem;
@@ -40,7 +40,7 @@ p {
 # -----------------------------
 # TITLE
 # -----------------------------
-st.markdown("## 🧬 Ubixplorer")
+st.markdown("## 🧬 UbiXplorer")
 st.markdown("### Ubiquitin-Based Spatial Explorer for AD–HD Profiling")
 
 st.markdown("""
@@ -130,6 +130,7 @@ with tabs[1]:
     st.markdown("""
 **Interpretation:**  
 Each point represents a spatial location on the human brain tissue section.  
+
 Color intensity reflects gene expression levels.
 """)
 
