@@ -43,18 +43,30 @@ p {
 # TITLE (UPDATED WITH LOGO)
 # -----------------------------
 #st.image("images/UbiXplorer logo desi.png", width=180)
-st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+# TITLE (PROPER HEADER DESIGN)
+# -----------------------------
+col1, col2 = st.columns([1.2, 4])
 
-st.image("images/UbiXplorer logo desi.png", width=350)
+with col1:
+    st.image("images/UbiXplorer logo desi.png", width=220)
 
-st.markdown("</div>", unsafe_allow_html=True)
-st.markdown("## Ubixplorer")
-st.markdown("### Ubiquitin-Based Spatial Explorer for AD–HD Profiling")
+with col2:
+    st.markdown("""
+    <div style='padding-top:30px'>
+        <h1 style='margin-bottom:0;'>Ubixplorer</h1>
+        <p style='font-size:20px; margin-top:5px;'>
+        Ubiquitin-Based Spatial Explorer for AD–HD Profiling
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
 
 st.markdown("""
 This platform integrates differential expression analysis, hub gene identification, and spatial transcriptomics to investigate ubiquitin-related mechanisms in neurodegenerative diseases.
 """)
 
+
+# -----------------------------
 
 
 # -----------------------------
