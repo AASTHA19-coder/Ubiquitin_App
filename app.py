@@ -55,14 +55,14 @@ with col2:
     <div style='padding-top:30px'>
         <h1 style='margin-bottom:0;'>Ubixplorer</h1>
         <p style='font-size:20px; margin-top:5px;'>
-        Ubiquitin-Based Spatial Explorer for AD–HD Profiling
+        Ubiquitin-Based Spatial Explorer for Profiling NDDs
         </p>
     </div>
     """, unsafe_allow_html=True)
 
 
 st.markdown("""
-This platform integrates differential expression analysis, hub gene identification, and spatial transcriptomics to investigate ubiquitin-related mechanisms in neurodegenerative diseases.
+This platform integrates differential expression analysis, hub gene identification, and spatial transcriptomics to investigate ubiquitin-related mechanisms in neurodegenerative diseases (NDDs).
 """)
 
 
