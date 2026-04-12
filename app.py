@@ -42,8 +42,12 @@ p {
 # -----------------------------
 # TITLE (UPDATED WITH LOGO)
 # -----------------------------
-st.image("images/UbiXplorer logo desi.png", width=180)
+#st.image("images/UbiXplorer logo desi.png", width=180)
+st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
 
+st.image("images/UbiXplorer logo desi.png", width=350)
+
+st.markdown("</div>", unsafe_allow_html=True)
 st.markdown("## Ubixplorer")
 st.markdown("### Ubiquitin-Based Spatial Explorer for AD–HD Profiling")
 
