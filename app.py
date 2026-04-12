@@ -53,7 +53,7 @@ with col1:
 with col2:
     st.markdown("""
     <div style='padding-top:30px'>
-        <h1 style='margin-bottom:0;'>Ubixplorer</h1>
+        <h1 style='margin-bottom:0;'>UbiXplorer</h1>
         <p style='font-size:20px; margin-top:5px;'>
         Ubiquitin-Based Spatial Explorer for Profiling NDDs
         </p>
